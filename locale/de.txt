@@ -1,0 +1,6 @@
+#Translation by Xanthin
+
+Camp Fire = Lagerfeuer
+Campfire = Lagerfeuer
+Campfire Active = Brennendes Lagerfeuer
+Put more wood on the fire! = Leg mehr Holz auf das Feuer!
