@@ -1,3 +1,11 @@
+  -- Boilerplate to support localized strings if intllib mod is installed.
+  local S
+  if intllib then
+    S = intllib.Getter()
+  else
+    S = function(s) return s end
+  end
+  
 minetest.register_craft({
 	output = "campfire:campfire", 
 	recipe = {{'', 'default:stick', ''}, {'default:stick', '', 'default:stick'}}
@@ -5,7 +13,7 @@ minetest.register_craft({
 
 
 minetest.register_node("campfire:campfire", {
-	description = "Camp Fire",
+	description = S("Camp Fire"),
 	drawtype = "plantlike",
 	tiles = {"CampFire_off.png"},
 	walkable=false,
@@ -17,7 +25,7 @@ minetest.register_node("campfire:campfire", {
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
-		meta:set_string("infotext", "Campfire")
+		meta:set_string("infotext", S("Campfire"))
 		local inv = meta:get_inventory()
 		inv:set_size("fuel", 1)
 		inv:set_size("src", 1)
@@ -38,7 +46,7 @@ minetest.register_node("campfire:campfire", {
 })
 
 minetest.register_node("campfire:campfire_active", {
-	description = "Campfire Active",
+	description = S("Campfire Active"),
 	drawtype = "plantlike",
 	tiles = {{name="CampFire.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
 	light_source = 8,
@@ -162,7 +170,7 @@ minetest.register_abm({
 		end
 
 		if fuel.time <= 0 then
-			meta:set_string("infotext","Put more wood on the fire!")
+			meta:set_string("infotext",S("Put more wood on the fire!"))
 			hacky_swap_node(pos,"campfire:campfire")
 			meta:set_string("formspec", default.furnace_inactive_formspec)
 			return
