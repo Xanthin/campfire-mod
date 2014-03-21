@@ -1,0 +1,6 @@
+# Template
+
+Camp Fire = 
+Campfire = 
+Campfire Active = 
+Put more wood on the fire! = 
