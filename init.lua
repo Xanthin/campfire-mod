@@ -1,11 +1,11 @@
-  -- Boilerplate to support localized strings if intllib mod is installed.
-  local S
-  if intllib then
-    S = intllib.Getter()
-  else
-    S = function(s) return s end
-  end
-  
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 minetest.register_craft({
 	output = "campfire:campfire", 
 	recipe = {{'', 'default:stick', ''}, {'default:stick', '', 'default:stick'}}
@@ -144,7 +144,7 @@ minetest.register_abm({
 		if meta:get_float("fuel_time") < meta:get_float("fuel_totaltime") then
 			local percent = math.floor(meta:get_float("fuel_time") /
 					meta:get_float("fuel_totaltime") * 100)
-			meta:set_string("infotext","Furnace active: "..percent.."%")
+			meta:set_string("infotext",S("Furnace active: %s%%"):format(percent))
 			hacky_swap_node(pos,"campfire:campfire_active")
 			meta:set_string("formspec",
 				"size[8,9]"..
@@ -186,3 +186,4 @@ minetest.register_abm({
 		inv:set_stack("fuel", 1, stack)
 	end,
 })
+
