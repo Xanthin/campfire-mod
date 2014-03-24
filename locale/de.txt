@@ -2,5 +2,6 @@
 
 Camp Fire = Lagerfeuer
 Campfire = Lagerfeuer
-Campfire Active = Brennendes Lagerfeuer
-Put more wood on the fire! = Leg mehr Holz auf das Feuer!
+Campfire Active = Lagerfeuer brennt
+Put more wood on the fire! = Lege mehr Holz auf das Feuer!
+Furnace active: %s%% = Lagerfeuer brennt: %s%%
