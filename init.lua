@@ -1,10 +1,10 @@
--- Boilerplate to support localized strings if intllib mod is installed.
-local S
-if intllib then
-	S = intllib.Getter()
-else
-	S = function(s) return s end
-end
+  -- Boilerplate to support localized strings if intllib mod is installed.
+  local S
+  if intllib then
+    S = intllib.Getter()
+  else
+    S = function(s) return s end
+  end
 
 minetest.register_craft({
 	output = "campfire:campfire", 
@@ -53,7 +53,8 @@ minetest.register_node("campfire:campfire_active", {
 	paramtype="light",
 	walkable=false,
 	drop = "campfire:campfire",
-	groups = {cracky=2, not_in_creative_inventory=1},
+	groups = {igniter=2,cracky=2, not_in_creative_inventory=1},
+	damage_per_second = 4,
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = function(pos)
@@ -77,6 +78,13 @@ minetest.register_node("campfire:campfire_active", {
 		end
 		return true
 	end,
+	after_place_node = function(pos)
+    	local t = {x=pos.x, y=pos.y+1, z=pos.z}
+    	local n = minetest.env:get_node(t)
+    	if n.name == "air" and makes_fire == true then
+      	  minetest.env:add_node(t, {name="firestone:flame"})
+    	end
+  	end,
 })
 
 function hacky_swap_node(pos,name)
