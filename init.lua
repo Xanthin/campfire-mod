@@ -142,8 +142,8 @@ minetest.register_abm({
 					srcstack = inv:get_stack("src", 1)
 					srcstack:take_item()
 					inv:set_stack("src", 1, srcstack)
-				else
-					print(S("Could not insert '%s'"):format(cooked.item:to_string()))
+				--else
+					--print(S("Could not insert '%s'"):format(cooked.item:to_string()))
 				end
 				meta:set_string("src_time", 0)
 			end
@@ -184,7 +184,12 @@ minetest.register_abm({
 			return
 		end
 
-		
+		if not inv:room_for_item("dst", cooked.item) then
+			meta:set_string("infotext",S("Furnace active: output bins are full"))
+			hacky_swap_node(pos,"campfire:campfire")
+			meta:set_string("formspec", default.furnace_inactive_formspec)
+			return
+		end	
 
 		meta:set_string("fuel_totaltime", fuel.time)
 		meta:set_string("fuel_time", 0)
