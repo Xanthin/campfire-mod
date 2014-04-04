@@ -5,3 +5,4 @@ Campfire =
 Campfire Active = 
 Put more wood on the fire! = 
 Furnace active: %s%% = 
+Could not insert '%s' = 
