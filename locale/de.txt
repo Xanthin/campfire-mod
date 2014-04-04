@@ -5,3 +5,4 @@ Campfire = Lagerfeuer
 Campfire Active = Lagerfeuer brennt
 Put more wood on the fire! = Lege mehr Holz auf das Feuer!
 Furnace active: %s%% = Lagerfeuer brennt: %s%%
+Could not insert '%s' = Kann '%s' nicht einfuegen
